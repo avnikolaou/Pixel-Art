@@ -7,7 +7,6 @@ document.querySelector("#submitButton").addEventListener("click", function (e) {
 });
 
 function makeGrid() {
-
     let gridWidth = document.getElementById("inputWeight").value;
     let gridHeight = document.getElementById("inputHeight").value;
 
@@ -17,11 +16,21 @@ function makeGrid() {
         for (let j = 0; j < gridHeight; j++) {
             const newtd = document.createElement("td");
             newtr.appendChild(newtd);
-            table.addEventListener("click", function () {
-                if (event.target.matches("td")){
-                    table.style.backgroundColor = canvas.value;
-                }
-            });
+            table.addEventListener("click", paintCell);
         }
     }
+}
+function paintCell() {
+    if (table != null) {
+        for (let i = 0; i < table.rows.length; i++) {
+            for (let j = 0; j < table.rows[i].cells.length; j++)
+                table.rows[i].cells[j].onclick = function () {
+                    getVal(this);
+                };
+        }
+    }
+}
+
+function getVal(cel) {
+    cel.style.backgroundColor = canvas.value;
 }
