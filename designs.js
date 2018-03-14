@@ -20,22 +20,17 @@ function makeGrid() {
         for (let j = 0; j < gridHeight; j++) {
             const newtd = document.createElement("td");
             newtr.appendChild(newtd);
-            table.addEventListener("click", paintCell);
         }
     }
+    addClickEventToCells();
 }
 
-function paintCell() {
-    if (table != null) {
-        for (let i = 0; i < table.rows.length; i++) {
-            for (let j = 0; j < table.rows[i].cells.length; j++)
-                table.rows[i].cells[j].onclick = function () {
-                    getVal(this);
-                };
-        }
+function addClickEventToCells() {
+    let cells = document.getElementsByTagName('td');
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].addEventListener("click",  function(event) {
+            let clickedCell = event.target;
+            clickedCell.style.backgroundColor = canvas.value;
+        });
     }
-}
-
-function getVal(cel) {
-    cel.style.backgroundColor = canvas.value;
 }
