@@ -24,6 +24,7 @@ function makeGrid() {
         }
     }
 }
+
 function paintCell() {
     if (table != null) {
         for (let i = 0; i < table.rows.length; i++) {
