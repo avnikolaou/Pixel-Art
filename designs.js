@@ -7,6 +7,10 @@ document.querySelector("#submitButton").addEventListener("click", function (e) {
 });
 
 function makeGrid() {
+    while (table.firstChild) {
+        table.removeChild(table.firstChild);
+    }
+
     let gridWidth = document.getElementById("inputWeight").value;
     let gridHeight = document.getElementById("inputHeight").value;
 
